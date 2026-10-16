@@ -122,13 +122,13 @@ flowchart TD
 
 | Module | Rôle |
 |---|---|
-| `package_constants` | Horloge, débit, codes d'état, seuils, nombre de confirmations |
-| `uart_rx` | Réception série avec **double synchronisation** anti-métastabilité |
-| `rx_frame_handler` | Machine à états de décodage de trame et vérification du checksum |
-| `threshold_classifier` | Classification par seuils et confirmation sur 3 mesures |
-| `uart_tx` | Émission de la trame d'état `AA · état · 55` |
-| `top_motor_classifier` | Intégration structurelle des quatre modules |
-| `tb_threshold_classifier`, `tb_top_motor_classifier` | Bancs d'essai |
+| [`package_constants`](rtl/package_constants.vhd) | Horloge, débit, codes d'état, seuils, nombre de confirmations |
+| [`uart_rx`](rtl/uart_rx.vhd) | Réception série avec **double synchronisation** anti-métastabilité |
+| [`rx_frame_handler`](rtl/rx_frame_handler.vhd) | Machine à états de décodage de trame et vérification du checksum |
+| [`threshold_classifier`](rtl/threshold_classifier.vhd) | Classification par seuils et confirmation sur 3 mesures |
+| [`uart_tx`](rtl/uart_tx.vhd) | Émission de la trame d'état `AA · état · 55` |
+| [`top_motor_classifier`](rtl/top_motor_classifier.vhd) | Intégration structurelle des quatre modules |
+| [`tb_threshold_classifier`](sim/tb_threshold_classifier.vhd) | Banc d'essai du classifieur |
 
 ## Firmware Arduino
 
@@ -160,7 +160,10 @@ Le classeur `Calibration_GEN5001_ordonnee (1).xlsx` regroupe la campagne de mesu
 
 | Fichier | Description |
 |---|---|
-| `Codage_FPGA_complet.qar` | Archive du projet Quartus Prime (sources VHDL, bancs d'essai, assignations de broches) |
+| [`rtl/`](rtl/) | Sources VHDL du FPGA, lisibles directement |
+| [`sim/`](sim/) | Banc d'essai du classifieur |
+| [`quartus/`](quartus/) | Fichiers de projet Quartus (`.qpf`, `.qsf` avec l'assignation des broches) |
+| `Codage_FPGA_complet.qar` | Archive complète du projet Quartus Prime, telle que livrée |
 | `GEN5001_arduino_complet.ino` | Firmware de l'Arduino Mega 2560 |
 | `Calibration_GEN5001_ordonnee (1).xlsx` | Données et analyse de la campagne de calibration |
 | `Rapport_Stage_GEN5001_Tahoc_Wokam_Durrice_Lea (1).pdf` | Rapport final de stage (20 pages) |
@@ -169,7 +172,7 @@ Le classeur `Calibration_GEN5001_ordonnee (1).xlsx` regroupe la campagne de mesu
 
 **FPGA**
 
-1. Dans Quartus Prime (25.1 Lite ou plus récent), ouvrir *Project → Restore Archived Project…* et choisir `Codage_FPGA_complet.qar`.
+1. Dans Quartus Prime (25.1 Lite ou plus récent), ouvrir *Project → Restore Archived Project…* et choisir `Codage_FPGA_complet.qar`. Les dossiers `rtl/`, `sim/` et `quartus/` sont une copie lisible du contenu de cette archive.
 2. Le *top-level* est `top_motor_classifier` et la cible est `5CSEMA5F31C6`.
 
 | Signal | Broche DE1-SoC |
