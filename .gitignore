@@ -1,0 +1,65 @@
+# ------------------------------------------------------------
+# Fichiers à ne pas publier
+# ------------------------------------------------------------
+
+# Journal d'archive Quartus : contient des chemins locaux Windows
+# (nom d'utilisateur, dossiers personnels)
+*.qarlog
+
+# Rapport de stage : nomme des superviseurs, du personnel de laboratoire
+# et des coéquipiers. Décommenter pour le garder privé.
+# Rapport_Stage_*.pdf
+
+# ------------------------------------------------------------
+# Quartus Prime : fichiers générés (si le projet est restauré ici)
+# ------------------------------------------------------------
+db/
+incremental_db/
+output_files/
+simulation/
+greybox_tmp/
+qdb/
+tmp-clearbox/
+*.qws
+*.rpt
+*.summary
+*.smsg
+*.done
+*.sof
+*.pof
+*.jdi
+*.sld
+*.qpf.bak
+*.qsf.bak
+PLLJ_PLLSPE_INFO.txt
+c5_pin_model_dump.txt
+
+# ModelSim / Questa
+work/
+transcript
+*.wlf
+modelsim.ini
+vsim.wlf
+
+# ------------------------------------------------------------
+# Arduino
+# ------------------------------------------------------------
+build/
+*.hex
+*.elf
+
+# ------------------------------------------------------------
+# Office : fichiers verrous / temporaires
+# ------------------------------------------------------------
+~$*
+*.tmp
+
+# ------------------------------------------------------------
+# Système et éditeurs
+# ------------------------------------------------------------
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.swp
